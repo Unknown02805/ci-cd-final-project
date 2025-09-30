@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: cleanup
-specs:
+spec:
   description: This task will clean up a workspaces by deleting all the files.
   workspaces:
     - name: source
@@ -37,7 +37,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: nose
-specs:
+spec:
   workspaces:
     - name: source
   params:
@@ -49,7 +49,7 @@ specs:
     - name: 
       image: python:3.9-slim
       workingDir: $(workspaces.source.path)
-      run: |
+      script: |
           #!/bin/bash
           set -e
           python -m pip install --upgrade pip wheel
